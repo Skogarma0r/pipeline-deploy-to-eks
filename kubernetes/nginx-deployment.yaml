@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
-  name: php-page
-
+  name: nginx
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: php-page
+      app: nginx
+  replicas: 1
   template:
     metadata:
       labels:
-        app: php-page
+        app: nginx
     spec:
       containers:
-        - name: php-page
-          image: skogarmaor/skogarmaor-php-page
-          ports:
-            - containerPort: 80
+      - name: nginx
+        image: skogarmaor/skogarmaor-php-page
+        ports:
+        - containerPort: 80
