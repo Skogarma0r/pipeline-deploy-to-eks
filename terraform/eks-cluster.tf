@@ -13,7 +13,7 @@ module "eks" {
 
     tags = {
         environment = "development"
-        application = "myapp"
+        application = "SkogarmaorDiploma"
     }
 
     eks_managed_node_groups = {
