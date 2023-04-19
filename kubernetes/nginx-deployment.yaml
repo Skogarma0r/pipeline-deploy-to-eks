@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: nginx
-
 spec:
   selector:
     matchLabels:
@@ -13,7 +11,6 @@ spec:
     metadata:
       labels:
         app: nginx
-        
     spec:
       containers:
       - name: nginx
