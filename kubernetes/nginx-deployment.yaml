@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: skogarmaor/skogarmaor-php-page
         ports:
         - containerPort: 80

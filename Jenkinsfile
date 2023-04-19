@@ -12,31 +12,21 @@ pipeline {
                 script {
                     dir('terraform') {
                         sh "terraform init"
-                        sh "terraform destroy -auto-approve"
+                        sh "terraform apply -auto-approve"
                     }
                 }
             }
         }
-        // stage("Deploy to EKS") {
-        //     steps {
-        //         script {
-        //             dir('kubernetes') {
-        //                 sh "aws eks update-kubeconfig --name SkogarmaorDiploma"
-        //                 sh "kubectl apply -f nginx-deployment.yaml"
-        //                 sh "kubectl apply -f nginx-service.yaml"
-        //             }
-        //         }
-        //     }
-        // }
-        // stage("Deploy Monitoring") {
-        //     steps {
-        //         script {
-        //             dir('kubernetes') {
-        //                 sh "kubectl apply -f grafana-deployment.yaml"
-        //                 sh "kubectl apply -f grafana-service.yaml"
-        //             }
-        //         }
-        //     }
-        // }
+        stage("Deploy to EKS") {
+            steps {
+                script {
+                    dir('kubernetes') {
+                        sh "aws eks update-kubeconfig --name SkogarmaorDiplomaCluster"
+                        sh "kubectl apply -f nginx-deployment.yaml"
+                        sh "kubectl apply -f nginx-service.yaml"
+                    }
+                }
+            }
+        }
     }
 }
