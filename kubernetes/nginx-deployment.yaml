@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-page
+spec:
+  selector:
+    matchLabels:
+      app: php-page
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: php-page
+    spec:
+      containers:
+      - name: php-page
+        image: skogarmaor/skogarmaor-php-page
+        ports:
+        - containerPort: 80
