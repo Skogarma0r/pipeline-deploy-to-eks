@@ -17,26 +17,26 @@ pipeline {
                 }
             }
         }
-        stage("Deploy to EKS") {
-            steps {
-                script {
-                    dir('kubernetes') {
-                        sh "aws eks update-kubeconfig --name myapp-eks-cluster"
-                        sh "kubectl apply -f nginx-deployment.yaml"
-                        sh "kubectl apply -f nginx-service.yaml"
-                    }
-                }
-            }
-        }
-        stage("Deploy Monitoring") {
-            steps {
-                script {
-                    dir('kubernetes') {
-                        sh 'kubectl apply -f grafana-deployment.yaml'
-                        sh 'kubectl apply -f grafana-service.yaml'
-                    }
-                }
-            }
-        }
+        // stage("Deploy to EKS") {
+        //     steps {
+        //         script {
+        //             dir('kubernetes') {
+        //                 sh "aws eks update-kubeconfig --name myapp-eks-cluster"
+        //                 sh "kubectl apply -f nginx-deployment.yaml"
+        //                 sh "kubectl apply -f nginx-service.yaml"
+        //             }
+        //         }
+        //     }
+        // }
+        // stage("Deploy Monitoring") {
+        //     steps {
+        //         script {
+        //             dir('kubernetes') {
+        //                 sh 'kubectl apply -f grafana-deployment.yaml'
+        //                 sh 'kubectl apply -f grafana-service.yaml'
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
