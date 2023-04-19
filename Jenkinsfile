@@ -28,5 +28,15 @@ pipeline {
                 }
             }
         }
+        stage("Deploy Monitoring") {
+            steps {
+                script {
+                    dir('kubernetes') {
+                        sh 'kubectl apply -f grafana-deployment.yaml'
+                        sh 'kubectl apply -f grafana-service.yaml'
+                    }
+                }
+            }
+        }
     }
 }
