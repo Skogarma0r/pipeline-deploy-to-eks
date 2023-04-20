@@ -12,40 +12,40 @@ pipeline {
                 script {
                     dir('terraform') {
                         sh "terraform init"
-                        sh "terraform apply -auto-approve"
+                        sh "terraform destroy -auto-approve"
                     }
                 }
             }
         }
-        stage("Deploy to EKS") {
-            steps {
-                script {
-                    dir('kubernetes') {
-                        sh "aws eks update-kubeconfig --name myapp-eks-cluster"
-                        sh "kubectl apply -f nginx-deployment.yaml"
-                        sh "kubectl apply -f nginx-service.yaml"
-                    }
-                }
-            }
-        }
-        stage("Deploy Prometheus") {
-            steps {
-                script {
-                    dir('kubernetes') {
-                        sh "kubectl apply -f prometheus-deployment.yaml"
-                        sh "kubectl apply -f prometheus-service.yaml"
-                    }
-                }
-            }
-        }
-        stage("Info for Lens Connection") {
-            steps {
-                script {
-                    dir('kubernetes') {
-                        sh "kubectl config view --minify --raw"
-                    }
-                }
-            }
-        }
+        // stage("Deploy to EKS") {
+        //     steps {
+        //         script {
+        //             dir('kubernetes') {
+        //                 sh "aws eks update-kubeconfig --name myapp-eks-cluster"
+        //                 sh "kubectl apply -f nginx-deployment.yaml"
+        //                 sh "kubectl apply -f nginx-service.yaml"
+        //             }
+        //         }
+        //     }
+        // }
+        // stage("Deploy Prometheus") {
+        //     steps {
+        //         script {
+        //             dir('kubernetes') {
+        //                 sh "kubectl apply -f prometheus-deployment.yaml"
+        //                 sh "kubectl apply -f prometheus-service.yaml"
+        //             }
+        //         }
+        //     }
+        // }
+        // stage("Info for Lens Connection") {
+        //     steps {
+        //         script {
+        //             dir('kubernetes') {
+        //                 sh "kubectl config view --minify --raw"
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
