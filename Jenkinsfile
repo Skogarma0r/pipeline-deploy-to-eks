@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        stage("Deploy to EKS") {
+        stage("Deploy Prometheus") {
             steps {
                 script {
                     dir('kubernetes') {
