@@ -39,7 +39,7 @@ pipeline {
                 }
             }
         }
-        stage("Deploy Prometheus") {
+        stage("Info") {
             steps {
                 script {
                     dir('kubernetes') {
