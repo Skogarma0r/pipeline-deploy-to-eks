@@ -28,5 +28,16 @@ pipeline {
                 }
             }
         }
+        stage("Deploy to EKS") {
+            steps {
+                script {
+                    dir('kubernetes') {
+                        sh "kubectl apply -f prometheus-deployment.yaml"
+                        sh "kubectl apply -f prometheus-service.yaml"
+                        sh "kubectl apply -f prometheus-configmap.yaml"
+                    }
+                }
+            }
+        }
     }
 }
