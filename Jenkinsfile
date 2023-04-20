@@ -34,7 +34,6 @@ pipeline {
                     dir('kubernetes') {
                         sh "kubectl apply -f prometheus-deployment.yaml"
                         sh "kubectl apply -f prometheus-service.yaml"
-                        sh "kubectl apply -f prometheus-configmap.yaml"
                     }
                 }
             }
