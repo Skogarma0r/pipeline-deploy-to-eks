@@ -32,9 +32,7 @@ pipeline {
             steps {
                 script {
                     dir('kubernetes') {
-                        sh "kubectl apply -f prometheus-deployment.yaml"
-                        sh "kubectl apply -f prometheus-service.yaml"
-                        sh "kubectl apply -f prometheus-configmap.yaml"
+                        sh "helm install prometheus oci://registry-1.docker.io/bitnamicharts/kube-prometheus"
                     }
                 }
             }
