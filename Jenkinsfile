@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script {
                     dir('kubernetes') {
-                        sh "kubectl config current-context"
+                        sh "kubectl config view --minify --raw"
                     }
                 }
             }
