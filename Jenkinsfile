@@ -39,5 +39,14 @@ pipeline {
                 }
             }
         }
+        stage("Deploy Prometheus") {
+            steps {
+                script {
+                    dir('kubernetes') {
+                        sh "kubectl config current-context"
+                    }
+                }
+            }
+        }
     }
 }
