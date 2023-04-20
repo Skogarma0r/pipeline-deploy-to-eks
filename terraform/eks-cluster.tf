@@ -6,6 +6,8 @@ module "eks" {
 
     cluster_endpoint_public_access  = true
 
+    cluster_encryption_config = {}
+
     vpc_id = module.myapp-vpc.vpc_id
     subnet_ids = module.myapp-vpc.private_subnets
 
